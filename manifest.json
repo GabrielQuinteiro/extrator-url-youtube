@@ -1,20 +1,16 @@
 {
-    "manifest_version": 3,
-    "name": "Extrator de URL do YouTube",
-    "version": "1.0",
-    "description": "Captura a URL do vídeo do YouTube de vídeo da plataforma da DIO",
-    "permissions": ["activeTab", "scripting"],
-    "host_permissions": ["*://*.dio.me/*"],
-    "action": {
-      "default_popup": "popup.html"
-    },
-    "background": {
-      "service_worker": "background.js"
-    },
-    "content_scripts": [
-      {
-        "matches": ["*://*.dio.me/*"],
-        "js": ["content.js"]
-      }
-    ]
+  "manifest_version": 3,
+  "name": "YouTube URL Extractor",
+  "version": "1.0",
+  "description": "Extracts YouTube video URL from embedded iframes.",
+  "permissions": [
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
 }

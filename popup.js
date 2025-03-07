@@ -16,20 +16,32 @@ document.addEventListener("DOMContentLoaded", async function () {
                 document.getElementById("status").style.display = "none";
                 let linkElement = document.getElementById("videoLink");
                 linkElement.style.display = "block";
-                linkElement.innerHTML = `<a href="${youtubeUrl}" target="_blank">${youtubeUrl}</a>`;
+                linkElement.value = youtubeUrl;
 
-                // Exibe o botão de copiar
+                // Exibe os botões
+                let buttonGroup = document.getElementById("buttonGroup");
+                buttonGroup.style.display = "flex";
+
+                // Botão "Copiar URL"
                 let copyButton = document.getElementById("copyButton");
-                copyButton.style.display = "block";
-
-                // Copiar a URL ao clicar no botão
                 copyButton.addEventListener("click", function () {
                     navigator.clipboard.writeText(youtubeUrl).then(() => {
                         copyButton.innerText = "Copiado!";
-                        setTimeout(() => copyButton.innerText = "Copiar URL", 2000);
+                        const popup = document.getElementById("popup");
+                        popup.style.display = "block";
+                        setTimeout(() => {
+                            popup.style.display = "none";
+                            copyButton.innerText = "Copiar URL";
+                        }, 2000);
                     }).catch(err => {
                         console.error("Erro ao copiar: ", err);
                     });
+                });
+
+                // Botão "Ir para o vídeo"
+                let videoButton = document.getElementById("videoButton");
+                videoButton.addEventListener("click", function () {
+                    window.open(youtubeUrl, "_blank");
                 });
             } else {
                 document.getElementById("status").innerText = "Nenhum vídeo encontrado.";
@@ -38,13 +50,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     );
 });
 
-// Função para capturar o iframe do YouTube
 function getYoutubeURL() {
     let iframe = document.querySelector("iframe[src*='youtube.com/embed/']");
     return iframe ? iframe.src : null;
 }
 
-// Função para extrair o ID do vídeo do link embed
 function extractVideoId(embedUrl) {
     let match = embedUrl.match(/embed\/([a-zA-Z0-9_-]+)\?/);
     return match ? match[1] : null;
