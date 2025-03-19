@@ -1,0 +1,83 @@
+:root {
+    font-family: 'Rubik';
+    font-size: 16px;
+    background-color: #242424;
+    --cor-rosa-dio: #F24081;
+    --cor-cinza: #333333;
+    --cor-preto: #1c1c1c;
+    --cor-black-piano: #000000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+}
+
+.popup__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 45px;
+}
+
+.title__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: var(--cor-rosa-dio);
+    width: 100%;
+    border-radius: 50px;
+}
+
+.icon-url {
+    width: 24px;
+}
+
+/* Estilização para a área onde a URL será exibida */
+.video-link {
+    padding: 10px 0 10px 10px;
+    background: var(--cor-cinza);
+    border-radius: 5px;
+    word-break: break-word;
+    flex-grow: 1;
+    margin: 0 0 0 10px;
+    width: 70%;
+}
+
+.video-link a {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    color: #fff;
+}
+
+
+/* Estilização do botão */
+.copy-button {
+    padding: 8px 12px;
+    background: #0073ff;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.copy-button img {
+    width: 24px;
+    height: 24px;
+}
+
+.copy-button:hover {
+    background: #005bbf;
+}
